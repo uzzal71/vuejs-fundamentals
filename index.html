@@ -19,7 +19,7 @@
             <button class="btn btn-primary" :disabled="newItem.length === 0" @click="saveItem">Save Item</button>
         </div>
         <ul>
-            <li v-for="item in items" :class="{strikeout: item.purchased}">{{ item.lebel }}</li>
+            <li v-for="item in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">{{ item.lebel }}</li>
         </ul>
         <p v-if="items.length === 0">Nice job! you've bought all your items.</p>
     </div>
@@ -60,6 +60,9 @@
             changeState: function(newState) {
                 this.state = newState;
                 this.newItem = '';
+            },
+            togglePurchased: function(item) {
+                item.purchased = !item.purchased;
             }
         }
     });
