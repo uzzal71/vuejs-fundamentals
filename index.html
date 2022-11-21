@@ -18,6 +18,7 @@
             <input type="text" v-model="newItem" placeholder="Add an item" @keyup.enter="saveItem">
             <button class="btn btn-primary" @click="saveItem">Save Item</button>
         </div>
+        <a v-bind:href="newItem" target="_blank">Dynamic Link</a>
         <ul>
             <li v-for="item in items">{{ item }}</li>
         </ul>
@@ -32,9 +33,9 @@
             header: 'Shopping list app',
             newItem: '',
             items: [
-                // "Laravel Microservice Master Course",
-                // "Mern stack development",
-                // "Python Course: The Big Picture - Pluralsight"
+                "Laravel Microservice Master Course",
+                "Mern stack development",
+                "Python Course: The Big Picture - Pluralsight"
             ]
         },
         methods: {
