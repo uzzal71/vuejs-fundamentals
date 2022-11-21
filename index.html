@@ -19,7 +19,7 @@
             <button class="btn btn-primary" :disabled="newItem.length === 0" @click="saveItem">Save Item</button>
         </div>
         <ul>
-            <li v-for="item in items">{{ item }}</li>
+            <li v-for="item in items" :class="{strikeout: item.purchased}">{{ item.lebel }}</li>
         </ul>
         <p v-if="items.length === 0">Nice job! you've bought all your items.</p>
     </div>
@@ -32,14 +32,29 @@
             header: 'Shopping list app',
             newItem: '',
             items: [
-                "Laravel Microservice Master Course",
-                "Mern stack development",
-                "Python Course: The Big Picture - Pluralsight"
+                {
+                    lebel: "Laravel Microservice Master Course",
+                    purchased: false,
+                    heighPriority: false
+                },
+                {
+                    lebel: "Mern stack development",
+                    purchased: true,
+                    heighPriority: false
+                },
+                {
+                    lebel: "Python Course: The Big Picture - Pluralsight",
+                    purchased: false,
+                    heighPriority: true
+                },
             ]
         },
         methods: {
             saveItem: function() {
-                this.items.push(this.newItem);
+                this.items.push({
+                    lebel: this.newItem,
+                    purchased: false
+                });
                 this.newItem = '';
             },
             changeState: function(newState) {
